@@ -28,6 +28,7 @@ A major change includes:
 - Built the first static version of the portfolio website in `public/` with a homepage, project detail pages, and a custom `404.html`.
 - Added initial content for seven projects provided by the user, with per-project screenshot placeholders and stable slug-based paths.
 - Added a shared stylesheet that keeps the site intentionally plain, white-background, and easy to maintain.
+- Added `wrangler.jsonc` for Workers Static Assets deployment and deployed the site to Cloudflare.
 
 ## Files Updated
 - `public/index.html`
@@ -41,15 +42,18 @@ A major change includes:
 - `public/projects/easyextract.html`
 - `public/projects/historical-price-tracker.html`
 - `public/screenshots/README.md`
+- `wrangler.jsonc`
 - `docs/dev-handoff.md`
 
 ## Validation Performed
 - Verified file structure and content creation in the workspace.
 - Confirmed project list page links to each detail page using stable static routes.
+- Ran `npx wrangler --version`, `npx wrangler check`, and `npx wrangler deploy`.
+- Deployment URL: `https://rick-wills-portfolio.rick-wills.workers.dev`
 
 ## Follow-Ups
 - Replace screenshot placeholders with real uploaded images and add `<img>` tags on each project detail page.
-- Optionally add a deployment config (`wrangler.jsonc`) if direct deploy commands are needed next.
+- Decide whether to keep this as the final production Worker name or rename before wider sharing.
 
 ## Handoff Template (Copy For Future Updates)
 
