@@ -1,0 +1,31 @@
+---
+description: Cloudflare Workers Static Assets guidance for deployment and runtime decisions
+globs: "{wrangler.jsonc,wrangler.toml,docs/deployment/**/*.md,public/**,src/**}"
+alwaysApply: false
+---
+
+# Cloudflare Worker Site Rule
+
+Use this guidance when working on hosting, deployment, routing, or Worker runtime behavior.
+
+## Platform Direction
+
+- This project deploys via Cloudflare Workers Static Assets.
+- Keep the deployment static-first.
+- Add Worker fetch logic only when there is a concrete requirement.
+
+## Routing Preferences
+
+- Prefer static routes and `404-page` behavior for this portfolio structure.
+- Only switch to SPA fallback if the app is intentionally redesigned as SPA.
+
+## Caching Preferences
+
+- Start with Cloudflare defaults.
+- Avoid custom cache rules unless there is a proven need.
+
+## Source Documents
+
+- `docs/deployment/cloudflare-workers.md`
+- `docs/architecture.md`
+- `docs/ai/project-context.md`

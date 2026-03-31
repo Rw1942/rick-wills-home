@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "rick-wills-portfolio",
+  "compatibility_date": "2026-03-30",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page"
+  }
+}
