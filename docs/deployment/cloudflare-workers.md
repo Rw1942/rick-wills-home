@@ -44,6 +44,9 @@ Notes:
 - `directory` should point at your static site output.
 - `404-page` works well for multi-page static portfolios.
 - Use SPA mode only if you later move to client-side routing.
+- Cloudflare serves `public/projects/sankeyfi.html` at `/projects/sankeyfi`.
+  Link to the short URL (no `.html`). Old `.html` links still work because
+  Cloudflare redirects them to the short URL.
 
 ## Basic Deploy Steps
 

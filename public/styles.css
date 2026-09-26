@@ -1,48 +1,112 @@
+/* Plain, readable defaults. Keep this file small. */
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 24px;
-  max-width: 860px;
-  line-height: 1.5;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+  max-width: 680px;
+  background: #fff;
+  color: #111;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a {
+  color: #0645ad;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid #0645ad;
+  outline-offset: 2px;
 }
 
 h1,
 h2 {
+  line-height: 1.25;
   margin-bottom: 0.4rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
 }
 
 p {
   margin-top: 0.25rem;
 }
 
-ul {
-  padding-left: 1.2rem;
+code {
+  font-size: 0.9em;
 }
 
+/* Site name shown at the top of every page */
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.site-header a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.intro {
+  color: #333;
+}
+
+/* Home page project list */
 .project-list {
   list-style: none;
   padding-left: 0;
+  margin-top: 2rem;
 }
 
 .project-list li {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+.project-list h2 {
+  margin: 0;
 }
 
 .meta {
-  color: #444;
+  color: #555;
+  font-size: 0.9rem;
   margin: 0.15rem 0;
 }
 
-.screenshot-placeholder {
-  border: 1px solid #bbb;
-  padding: 10px;
-  margin: 10px 0;
-  max-width: 680px;
+/* Project detail pages */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
-.home-link {
-  display: inline-block;
-  margin-top: 1.5rem;
+figure {
+  margin: 1rem 0 1.5rem;
 }
+
+figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+}
+
+figcaption {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+

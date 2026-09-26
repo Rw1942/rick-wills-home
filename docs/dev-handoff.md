@@ -52,8 +52,37 @@ A major change includes:
 - Deployment URL: `https://rick-wills-portfolio.rick-wills.workers.dev`
 
 ## Follow-Ups
-- Replace screenshot placeholders with real uploaded images and add `<img>` tags on each project detail page.
+- Replace screenshot placeholders with real uploaded images and add `<img>` tags on each project detail page. (Placeholders reworked on 2026-09-26; see below.)
 - Decide whether to keep this as the final production Worker name or rename before wider sharing.
+
+## Date
+- 2026-09-26
+
+## Change Summary
+- Made the site easier to read: centered 680px column, system font, clearer link and focus styles. Still white and plain.
+- Added a "Rick Wills" site header on every page and a "← All projects" link at the top of each detail page.
+- Rewrote the home intro so it describes the projects instead of the site.
+- Dates now show as words (`March 2026`) inside `<time datetime="2026-03">` tags.
+- Home list shows a "Live site" link for projects that have one (Sankeyfi, easyextract).
+- Removed the developer note ("Add images in: /public/screenshots/...") that visitors could see. Detail pages now say "Screenshots coming soon." and have a ready-to-copy `<figure>` example in an HTML comment.
+- Links now use short URLs (`/projects/sankeyfi`), which Cloudflare serves directly. Old `.html` links still work because Cloudflare redirects them.
+- Added `favicon.svg`, plus description and Open Graph tags so shared links show a proper title and summary.
+
+## Files Updated
+- `public/index.html`, `public/404.html`, `public/projects/*.html`
+- `public/styles.css`
+- `public/favicon.svg` (new)
+- `public/screenshots/README.md`
+- `docs/content-model.md`, `docs/deployment/cloudflare-workers.md`, `docs/dev-handoff.md`
+
+## Validation Performed
+- Ran `npx wrangler dev` and checked with `curl`: `/`, `/projects/sankeyfi`, and `/favicon.svg` return 200; `/projects/sankeyfi.html` returns 307 to `/projects/sankeyfi`; a missing page returns 404.
+- Took Playwright screenshots at 1280px and 390px widths: the layout looks right and nothing scrolls sideways.
+
+## Follow-Ups
+- Add real screenshots (see `public/screenshots/README.md`).
+- Consider adding contact links (email, GitHub, LinkedIn) to the home page.
+- Add live links for the other projects if they are public.
 
 ## Handoff Template (Copy For Future Updates)
 

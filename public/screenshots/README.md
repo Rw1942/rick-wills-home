@@ -15,4 +15,17 @@ Recommended naming:
 - `image-01.png`
 - `image-02.png`
 
-You can add more files later and reference them on each project page.
+Then show the image on the project page (for example
+`/public/projects/sankeyfi.html`). Each page has a ready-to-copy example
+in an HTML comment under the "Screenshots" heading:
+
+```html
+<figure>
+  <img src="/screenshots/sankeyfi/image-01.png"
+       alt="Sankey chart built from a sample CSV file">
+  <figcaption>Optional short caption.</figcaption>
+</figure>
+```
+
+Remove the "Screenshots coming soon." line once a page has real images.
+Always write alt text that says what the screenshot shows.

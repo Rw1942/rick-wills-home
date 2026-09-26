@@ -56,3 +56,10 @@ Use one format consistently across all projects:
 - `YYYY-MM-DD` if day precision matters
 
 Do not mix date formats within the same site.
+
+On the pages, show the date in words and keep the machine-readable
+`YYYY-MM` value in a `<time>` tag:
+
+```html
+<time datetime="2026-03">March 2026</time>
+```
