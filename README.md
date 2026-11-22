@@ -40,5 +40,6 @@ The Worker runtime is available for future needs, but the default approach is st
 - `AGENTS.md`: OpenAI Codex guidance
 - `CLAUDE.md`: Claude Code guidance
 - `.cursor/rules/*.mdc`: Cursor project rules
+- `.claude/settings.json` and `.mcp.json`: Claude Code permissions and the Cloudflare MCP server (see "Cloudflare operations" in `AGENTS.md`)
 
 All tool-specific files point back to `docs/ai/project-context.md` to stay in sync.

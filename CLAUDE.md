@@ -4,6 +4,10 @@ Use this file as a thin wrapper around the shared project context.
 
 @docs/ai/project-context.md
 
+Deploying and other Cloudflare work follow "Cloudflare operations" in `AGENTS.md`:
+
+@AGENTS.md
+
 ## Local Priority Rules
 
 - Keep this project ultra-minimal and static-first.

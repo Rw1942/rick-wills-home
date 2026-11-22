@@ -15,6 +15,7 @@ Deploy a mostly static website on Cloudflare with the option to add lightweight 
 - Cloudflare account
 - Node.js installed locally
 - `wrangler` CLI available (`npx wrangler` also works)
+- `CLOUDFLARE_API_TOKEN` set in the environment so Wrangler can deploy without logging in (`npx wrangler login` works as a fallback on your own computer)
 
 ## Deployment Model
 

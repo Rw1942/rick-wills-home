@@ -46,6 +46,7 @@ This is the single source of truth for AI project context.
 - Static assets should be the default serving path
 - Keep routing straightforward (`404-page` style unless SPA is intentionally adopted)
 - Avoid custom caching rules unless justified
+- Agents deploy with Wrangler and reach the rest of the Cloudflare account through the Code Mode MCP server in `.mcp.json`, both using `CLOUDFLARE_API_TOKEN` (see "Cloudflare operations" in `AGENTS.md`)
 
 ## Documentation Conventions
 
