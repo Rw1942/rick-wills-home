@@ -1,34 +1,45 @@
-# AGENTS.md
+# Rick Wills Projects (static portfolio)
 
-Use `docs/ai/project-context.md` as the canonical project context.
+A plain, hand-written HTML portfolio: a list of projects with short descriptions, each linking to a detail page with a longer write-up and screenshots. It has no build step and no Worker code; Cloudflare serves `public/` through Workers static assets as the Worker `rick-wills-portfolio` at https://rick-wills-portfolio.rick-wills.workers.dev.
 
-## Project Direction
+This is an older site from March 2026. The owner's main portfolio is https://www.rickwills.com (repo `Rw1942/rickwills-portfolio`, Worker `rickwills-portfolio`, note the missing hyphen), which lists most of the same projects. This site is not linked from a custom domain and had no traffic in the 30 days before 2026-11-22.
 
-- Build and maintain an ultra-minimal portfolio website.
-- Keep design plain: white background, default text style, minimal layout.
-- Keep implementation simple and static-first.
+## Commands
 
-## Source Of Truth
+Run from the repository root. A fresh checkout or cloud session needs `npm ci` first.
 
-- Canonical context: `docs/ai/project-context.md`
-- Product details: `docs/product-brief.md`
-- Architecture and constraints: `docs/architecture.md`
-- Content structure: `docs/content-model.md`
-- Deployment steps: `docs/deployment/cloudflare-workers.md`
+| Task | Command |
+|---|---|
+| Local server (http://localhost:8787) | `npm run dev` |
+| Check (validate config and assets without deploying) | `npm run check` |
+| Deploy to production | `npm run deploy` |
 
-## Working Rules
+`npm run check` is the gate for every change: run it before deploying and report its result. After a deploy, open the home page, one project page and a missing path (it should return the custom 404 page).
 
-- Prefer plain HTML/CSS/JS unless explicitly asked otherwise.
-- Avoid adding dependencies or complexity without clear value.
-- Do not introduce Worker runtime logic unless required.
-- Preserve clear, beginner-friendly documentation.
-- After major code changes, update `docs/dev-handoff.md`.
+## Layout
 
-## Cloudflare operations
+- `public/index.html`: the project list.
+- `public/projects/<slug>.html`: one detail page per project.
+- `public/screenshots/<slug>/`: screenshots per project; `README.md` there lists the folders.
+- `public/styles.css`: the one stylesheet. `public/404.html`: the not-found page.
 
-Agents deploy and change infrastructure directly. Two tools cover it, and both authenticate with the `CLOUDFLARE_API_TOKEN` environment variable for account `3c526a82504f460f254335ac81d313dd`:
+## Cloudflare
 
-- **Wrangler** (`npx wrangler`) for anything tied to `wrangler.jsonc`: deploys, versions and rollback, D1 migrations and queries, secrets, and `wrangler tail`. The repo has no package.json scripts, so `npx wrangler deploy` publishes `public/` as the `rick-wills-portfolio` Worker.
-- **Cloudflare Code Mode MCP** (`cloudflare-api` in `.mcp.json`) for the rest of the account: DNS, routes and custom domains, zone and Worker settings, analytics, other Workers and their resources, and the Cloudflare docs. Call `search` to find the endpoint, then `execute` with `account_id` set to the account ID above. `docs` searches the developer docs. Results are cut off at about 6,000 tokens, so filter inside the code instead of returning whole lists.
+- Worker `rick-wills-portfolio` on account `3c526a82504f460f254335ac81d313dd`, served only on workers.dev (no routes or custom domains). It is assets-only: no `main` script, no bindings and no secrets. Preview URLs are on, as they were when the config was standardized.
+- `not_found_handling` is `404-page`. Requests for `/projects/<slug>.html` redirect (307) to `/projects/<slug>`, the default HTML handling for static assets.
+- Agents deploy and change infrastructure directly. Wrangler (the repository's pinned copy, run through the npm scripts or `npx wrangler`) handles deploys, rollbacks and `wrangler tail`. This project uses Wrangler, so do not run `cf dev`, `cf build`, `cf deploy` or `cf migrate`.
+- Cloudflare Code Mode (`cloudflare-api` MCP server) covers the rest of the account: DNS, routes and domains, Worker settings, logs and analytics, other projects, and the Cloudflare docs. Call `search` to find an endpoint, then `execute` with `account_id` set to the account ID above. Results are cut off at about 6,000 tokens, so filter inside the code.
+- Both act on production. Wrangler and Code Mode read `CLOUDFLARE_API_TOKEN`. The account-wide standard, token permissions and the inventory of every project are in the `Rw1942/cloudflare-account` repo.
 
-Both act on production; `wrangler.jsonc` defines no staging environment. `.claude/settings.json` allows these tools without prompts and still asks before a force push or deleting a Worker, database, bucket or namespace. Account-wide setup, token permissions and the inventory of every project are in the `Rw1942/cloudflare-account` repo, `docs/agent-setup.md`.
+## Working here
+
+- Commit to `main` and deploy with `npm run deploy` once the check passes.
+- Keep the site static: plain HTML and CSS, no framework, dependency or Worker script unless the owner asks for one. Add a `main` script only for a concrete need such as a redirect.
+- Commit every content change before deploying. In March 2026 a deploy went out with a Treatforce project that was never committed; it was recovered from the live site on 2026-11-22.
+
+## Rules and reference
+
+Rules in `.agents/rules/` hold decisions that are not visible in the code. Claude Code and Antigravity load them automatically; other agents should read the one that matches the files they are changing.
+
+- `.agents/rules/writing-style.md`: the owner's writing rules for copy, docs, commit messages and replies.
+- `.agents/rules/content.md`: how project entries, detail pages and screenshots are laid out, and the plain design.

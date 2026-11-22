@@ -1,3 +1,5 @@
+node_modules/
 .wrangler/
-.sfdx/
+.dev.vars
 .claude/settings.local.json
+CLAUDE.local.md

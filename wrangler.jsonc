@@ -1,7 +1,16 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "rick-wills-portfolio",
-  "compatibility_date": "2026-03-30",
+  "compatibility_date": "2026-11-22",
+  // Served only on workers.dev; preview URLs were on when this was standardized.
+  "workers_dev": true,
+  "preview_urls": true,
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 1 },
+    "traces": { "enabled": true, "head_sampling_rate": 1 },
+    "issues": { "enabled": true }
+  },
   "assets": {
     "directory": "./public",
     "not_found_handling": "404-page"

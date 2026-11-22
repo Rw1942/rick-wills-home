@@ -1,17 +1,8 @@
-# CLAUDE.md
-
-Use this file as a thin wrapper around the shared project context.
-
-@docs/ai/project-context.md
-
-Deploying and other Cloudflare work follow "Cloudflare operations" in `AGENTS.md`:
-
 @AGENTS.md
 
-## Local Priority Rules
+## Claude Code
 
-- Keep this project ultra-minimal and static-first.
-- Favor plain HTML/CSS/JS and simple file structures.
-- Avoid unnecessary dependencies and visual complexity.
-- Keep all content and docs beginner-friendly.
-- After major code changes, update `docs/dev-handoff.md`.
+- `AGENTS.md` is the shared guide for Claude Code, Codex and Antigravity. Put project facts there; keep only Claude Code specifics here.
+- `.claude/rules` and `.claude/skills` are symlinks to `.agents/rules` and `.agents/skills`, so all three tools share one copy. Edit the files under `.agents/`.
+- `.mcp.json` connects Cloudflare Code Mode as `cloudflare-api` (tools `search`, `execute`, `docs`), authenticated with `CLOUDFLARE_API_TOKEN`. `.claude/settings.json` approves it and sets the shared permissions.
+- Personal, uncommitted preferences go in `CLAUDE.local.md`, which is git-ignored.

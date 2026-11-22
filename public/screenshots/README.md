@@ -9,6 +9,7 @@ Add project images into these folders:
 - `/public/screenshots/sankeyfi/`
 - `/public/screenshots/easyextract/`
 - `/public/screenshots/historical-price-tracker/`
+- `/public/screenshots/treatforce/`
 
 Recommended naming:
 
