@@ -1,8 +1,8 @@
 # Rick Wills Projects (static portfolio)
 
-A plain, hand-written HTML portfolio: a list of projects with short descriptions, each linking to a detail page with a longer write-up and screenshots. It has no build step and no Worker code; Cloudflare serves `public/` through Workers static assets as the Worker `rick-wills-portfolio` at https://rick-wills-portfolio.rick-wills.workers.dev.
+A plain, hand-written HTML portfolio: a list of projects with short descriptions, each linking to a detail page with a longer write-up and screenshots. It has no build step and no Worker code. It was served through Workers static assets as the Worker `rick-wills-portfolio` at https://rick-wills-portfolio.rick-wills.workers.dev until that Worker was deleted on 2026-11-22.
 
-This is an older site from March 2026. The owner's main portfolio is https://www.rickwills.com (repo `Rw1942/rickwills-portfolio`, Worker `rickwills-portfolio`, note the missing hyphen), which lists most of the same projects. This site is not linked from a custom domain and had no traffic in the 30 days before 2026-11-22.
+This is an older site from March 2026. The owner's main portfolio is https://www.rickwills.com (repo `Rw1942/rickwills-portfolio`, Worker `rickwills-portfolio`, note the missing hyphen), which lists most of the same projects. This site had no traffic in the 30 days before 2026-11-22, so its Worker was deleted and the repo is kept for reference until the owner archives it. Do not deploy it unless the owner asks; `npm run deploy` would recreate the Worker at the same address.
 
 ## Commands
 
@@ -25,7 +25,7 @@ Run from the repository root. A fresh checkout or cloud session needs `npm ci` f
 
 ## Cloudflare
 
-- Worker `rick-wills-portfolio` on account `3c526a82504f460f254335ac81d313dd`, served only on workers.dev (no routes or custom domains). It is assets-only: no `main` script, no bindings and no secrets. Preview URLs are on, as they were when the config was standardized.
+- Worker `rick-wills-portfolio` (deleted 2026-11-22) on account `3c526a82504f460f254335ac81d313dd`, which served only on workers.dev (no routes or custom domains). It is assets-only: no `main` script, no bindings and no secrets. Preview URLs are on, as they were when the config was standardized.
 - `not_found_handling` is `404-page`. Requests for `/projects/<slug>.html` redirect (307) to `/projects/<slug>`, the default HTML handling for static assets.
 - Agents deploy and change infrastructure directly. Wrangler (the repository's pinned copy, run through the npm scripts or `npx wrangler`) handles deploys, rollbacks and `wrangler tail`. This project uses Wrangler, so do not run `cf dev`, `cf build`, `cf deploy` or `cf migrate`.
 - Cloudflare Code Mode (`cloudflare-api` MCP server) covers the rest of the account: DNS, routes and domains, Worker settings, logs and analytics, other projects, and the Cloudflare docs. Call `search` to find an endpoint, then `execute` with `account_id` set to the account ID above. Results are cut off at about 6,000 tokens, so filter inside the code.
